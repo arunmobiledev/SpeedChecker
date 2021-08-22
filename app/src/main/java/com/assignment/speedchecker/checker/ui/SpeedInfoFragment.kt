@@ -110,7 +110,7 @@ class SpeedInfoFragment : Fragment() {
         binding.btnUpload.tag = "disabled"
 
         speedInfoViewModel.completeListener.observe(viewLifecycleOwner, {
-            if(it.first == "download") {
+            if(it!!.first == "download") {
                 if(!it.second) {
                     binding.lblDownloadSpeed.text = getString(R.string.download_test_failed)
                 }

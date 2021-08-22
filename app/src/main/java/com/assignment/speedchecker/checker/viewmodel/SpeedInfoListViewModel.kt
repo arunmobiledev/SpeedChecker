@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.*
 
-class SpeedInfoListViewModel(private val mFirebaseInstance: FirebaseDatabase, val appUtil: AppUtil, private val speedInfoDataService: SpeedInfoDataService, application: Application, private val gson : Gson, val appData: AppData, private val customLoader: CustomLoader) : AndroidViewModel(application) {
+class SpeedInfoListViewModel(private val mFirebaseInstance: FirebaseDatabase, val appUtil: AppUtil, private val speedInfoDataService: SpeedInfoDataService, application: Application, private val gson : Gson, val appData: AppData) : AndroidViewModel(application) {
 
     val toast : SingleLiveEvent<ToastModel>  = SingleLiveEvent()
     var speedInfoModel : MutableLiveData<SpeedInfoModel>  = MutableLiveData()
@@ -31,9 +31,6 @@ class SpeedInfoListViewModel(private val mFirebaseInstance: FirebaseDatabase, va
     }
 
     fun getUsers() {
-        if(MainApplication.getActivity() != null) {
-            customLoader.showLoading(MainApplication.getActivity())
-        }
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 // get reference to 'users' node
@@ -58,8 +55,6 @@ class SpeedInfoListViewModel(private val mFirebaseInstance: FirebaseDatabase, va
             } catch (e : Exception) {
                 Log.d(TAG, e.message!!)
                 toast.value = ToastModel(R.drawable.ic_error, getApplication<MainApplication>().getString(R.string.something_went_wrong))
-            }  finally {
-                customLoader.stopLoading()
             }
         }
     }

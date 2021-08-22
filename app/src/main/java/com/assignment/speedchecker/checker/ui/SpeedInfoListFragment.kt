@@ -37,6 +37,7 @@ import android.widget.TextView.OnEditorActionListener
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import android.os.Looper
+import com.assignment.speedchecker.util.searchview.PrSearchView
 
 /**
  * A simple [SpeedInfoListFragment] subclass.
@@ -76,6 +77,7 @@ class SpeedInfoListFragment : Fragment() {
         binding.root.requestFocus()
         binding.root.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_BACK) {
+                appUtil.hideKeyboard(requireActivity())
                 navController.popBackStack()
                 true
             } else {
@@ -84,18 +86,19 @@ class SpeedInfoListFragment : Fragment() {
         }
 
         binding.toolbar.setNavigationOnClickListener {
+            appUtil.hideKeyboard(requireActivity())
             navController.popBackStack()
         }
 
         speedInfoListViewModel.usersInfoSavedSuccess.observe(viewLifecycleOwner, {
-            Log.d(TAG, it.second.toString())
+            Log.d(TAG, it!!.second.toString())
             lstSpeedInfoModel.clear()
             lstSpeedInfoModel.addAll(it.second)
             initList()
         })
 
         speedInfoListViewModel.toast.observe(viewLifecycleOwner, {
-            Log.d(TAG, it.msg)
+            Log.d(TAG, it!!.msg)
         })
 
         speedInfoListViewModel.getUsers()
@@ -123,11 +126,13 @@ class SpeedInfoListFragment : Fragment() {
             }
         }
         binding.searchView.addTextChangedListener(searchViewTextWatcher)
-        binding.searchView.setDrawableClickListener { target ->
-            if (DrawablePosition.END == target) {
-                binding.searchView.setText("")
+        binding.searchView.setDrawableClickListener(object : PrSearchView.DrawableClickListener {
+            override fun onClick(target: DrawablePosition?) {
+                if (DrawablePosition.END == target) {
+                    binding.searchView.setText("")
+                }
             }
-        }
+        })
 
     }
 

@@ -43,16 +43,6 @@ class AppData {
         }
     }
 
-    fun deleteAppData() {
-        if(!encryption) {
-            val sharedPreferences = MainApplication.getContext()?.getSharedPreferences("OpenPreferences", Context.MODE_PRIVATE)
-            sharedPreferences!!.edit().clear().apply()
-        } else {
-            val sharedPreferences = MainApplication.getContext()?.let { provideSharedPref(it) }
-            sharedPreferences!!.edit().clear().apply()
-        }
-    }
-
     private fun provideSharedPref(applicationContext : Context) : SharedPreferences {
 
         // Step 1: Create or retrieve the Master Key for encryption/decryption

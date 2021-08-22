@@ -13,7 +13,6 @@ import com.assignment.speedchecker.checker.viewmodel.SpeedInfoListViewModel
 import com.assignment.speedchecker.checker.viewmodel.SpeedInfoViewModel
 import com.assignment.speedchecker.util.AppData
 import com.assignment.speedchecker.util.AppUtil
-import com.assignment.speedchecker.util.CustomLoader
 import com.google.firebase.database.FirebaseDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -61,8 +60,8 @@ class MainApplication : Application() {
 }
 
 val preConfigurationModules = module {
-    viewModel { SpeedInfoViewModel(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel { SpeedInfoListViewModel(get(), get(), get(), get(), get(), get(), get()) }
+    viewModel { SpeedInfoViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { SpeedInfoListViewModel(get(), get(), get(), get(), get(), get()) }
 }
 
 val appDataModule = module {
@@ -78,9 +77,6 @@ val localDatasourceModule = module {
 val appUtilModule = module {
     single {
         AppUtil(androidContext())
-    }
-    single {
-        CustomLoader
     }
     single {
         Gson()

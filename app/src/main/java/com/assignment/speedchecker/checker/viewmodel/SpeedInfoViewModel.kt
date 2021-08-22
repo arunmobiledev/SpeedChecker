@@ -27,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.*
 
-class SpeedInfoViewModel(private val mFirebaseInstance: FirebaseDatabase, val appUtil: AppUtil, private val speedInfoDataService: SpeedInfoDataService, application: Application, private val gson : Gson, val appData: AppData, private val customLoader: CustomLoader) : AndroidViewModel(application) {
+class SpeedInfoViewModel(private val mFirebaseInstance: FirebaseDatabase, val appUtil: AppUtil, private val speedInfoDataService: SpeedInfoDataService, application: Application, private val gson : Gson, val appData: AppData) : AndroidViewModel(application) {
 
     val toast : SingleLiveEvent<ToastModel>  = SingleLiveEvent()
     var completeListener : SingleLiveEvent<Pair<String, Boolean>>  = SingleLiveEvent()

@@ -120,7 +120,7 @@ public class SpeedTestTask {
     /**
      * define if mSocket close error is to be expected.
      */
-    private boolean mForceCloseSocket;
+    private boolean mForceCloseSocket = false;
 
     /**
      * size of file to upload.
