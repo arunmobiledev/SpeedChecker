@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="speedInfoModel"
+            type="com.assignment.speedchecker.checker.model.SpeedInfoModel" />
+        <variable
+            name="appUtil"
+            type="com.assignment.speedchecker.util.AppUtil" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@drawable/ic_back_arrow"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <TextView
+                android:id="@+id/lblDownloadSpeed"
+                style="@style/ActionBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text='@{"Download speed :  "+ speedInfoModel.downloadSpeed + " Mbps"}'
+                tools:text="@string/download_speed_dummy_text"
+                android:textSize="@dimen/_17sdp"
+                app:layout_constraintBottom_toTopOf="@+id/lblUploadSpeed"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/lblUploadSpeed"
+                style="@style/ActionBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text='@{"Upload speed :  "+speedInfoModel.uploadSpeed + " Mbps"}'
+                tools:text="@string/upload_speed_dummy_text"
+                android:textSize="@dimen/_17sdp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline7"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/lblMobileNumber"
+                style="@style/TextViewSubtitleDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                tools:text="Mobile number : 5456435354"
+                android:text='@{("Mobile number : "+speedInfoModel.mobileNumber)}'
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+            <TextView
+                android:id="@+id/lblTime"
+                style="@style/TextViewSubtitleDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                tools:text="Last checked time : 5.30 PM Aug 20, 2020"
+                android:text='@{("Last checked time :  "+appUtil.getDate(speedInfoModel.timeStamp, "dd MMM, yyyy hh:mm:ss aa"))}'
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblMobileNumber" />
+
+            <ImageButton
+                android:id="@+id/btnReload"
+                style="@style/CommonImageButtonDark"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_100sdp"
+                android:contentDescription="@string/cont_desc_refresh"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/bg"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:tint="@color/bg"
+                tools:ignore="UseAppTint" />
+
+            <ImageButton
+                android:id="@+id/btnHistory"
+                style="@style/CommonImageButtonDark"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_100sdp"
+                android:contentDescription="@string/cont_desc_history"
+                android:src="@drawable/ic_history"
+                android:tint="@color/bg"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline6"
+                app:tint="@color/bg"
+                tools:ignore="UseAppTint" />
+
+            <ImageButton
+                android:id="@+id/btnUpload"
+                style="@style/CommonImageButtonDark"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/ic_upload"
+                android:contentDescription="@string/cont_desc_upload"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="@color/bg"
+                android:tint="@color/bg"
+                tools:ignore="UseAppTint" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.47" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

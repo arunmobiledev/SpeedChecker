@@ -1,0 +1,10 @@
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<resources>
+    <string name="next_button">Go to next screen</string>
+    <string name="cont_desc_upload">Upload</string>
+    <string name="cont_desc_refresh">Refresh</string>
+    <string name="cont_desc_history">View speed list</string>
+</resources>

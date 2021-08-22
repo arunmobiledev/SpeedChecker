@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/custom_pinpad.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/dialog_custom.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_ble_scan_preparation.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_discover_endoscope.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_patient_info.xml" value="0.19462465245597776" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_usb_connect_instruction.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/Lotus bu/Lotus/app/src/main/res/layout/fragment_video_mode_selection.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/drawable/bluetooth.xml" value="0.11302083333333333" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/drawable/ic_search_close.xml" value="0.2203125" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/drawable/ic_upload.xml" value="0.1648148148148148" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/drawable/splash_bg.xml" value="0.11302083333333333" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout-land/activity_main.xml" value="0.35315315315315315" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout-land/fragment_speed_info.xml" value="0.22" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout/fragment_speed_info.xml" value="0.2" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout/fragment_speed_info_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/ws/new android/SpeedChecker/app/src/main/res/layout/item_history.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+</project>

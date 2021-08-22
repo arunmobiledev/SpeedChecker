@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item android:id="@android:id/mask">
+                <shape android:shape="oval">
+                    <solid android:color="@color/bg" />
+                    <corners android:radius="@dimen/_30sdp" />
+                </shape>
+            </item>
+
+            <item android:id="@android:id/background">
+                <shape android:shape="oval">
+                    <solid android:color="@color/white" />
+                    <stroke android:width="@dimen/_1sdp"
+                        android:color="@color/bg" />
+                    <corners android:radius="@dimen/_30sdp" />
+                </shape>
+            </item>
+            <item
+                android:bottom="8dp"
+                android:left="8dp"
+                android:right="8dp"
+                android:top="8dp"
+                android:width="16dp"
+                android:height="16dp"
+                android:drawable="@drawable/ic_location"
+                android:gravity="center_vertical|right" />
+        </layer-list>
+    </item>
+</selector>

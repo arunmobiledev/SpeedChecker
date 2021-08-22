@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<resources>
+    <string name="app_name">Internet speed checker</string>
+
+    <string name="ok">OK</string>
+
+    <!--    permissions -->
+    <string name="tedpermission_setting">Setting</string>
+    <string name="tedpermission_close">Close</string>
+    <string name="tedpermission_confirm">Confirm</string>
+
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="internet_error">Check your internet connection and retry again</string>
+    <string name="loading">Loading…</string>
+
+
+    <string name="home">Home</string>
+    <string name="next">Next</string>
+
+    <string name="mobile_format_error">Mobile number must contains 6 to 15 numbers.</string>
+    <string name="speed_info_saved_successful">Speed info saved successful</string>
+
+    <string name="download_speed_dummy_text">Download speed : 1 Mbps</string>
+    <string name="upload_speed_dummy_text">Upload speed : 1 Mbps</string>
+
+    <string name="open">Open</string>
+    <string name="internet_connection_not_available">Internet connection not available</string>
+    <string name="no_items_found">No items found</string>
+    <string name="download_test_running">Download test is running</string>
+    <string name="upload_test_running">Upload test is running</string>
+    <string name="speed_test_result">Speed test results</string>
+    <string name="download_test_failed">Download test failed</string>
+    <string name="upload_test_failed">Upload test failed</string>
+    <string name="history_list">History list</string>
+    <string name="search_by_mobile_number">Search by mobile number</string>
+
+</resources>

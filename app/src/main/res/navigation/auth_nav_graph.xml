@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.assignment.speedchecker.splash.ui.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_speedInfoFragment"
+            app:destination="@id/speedInfoFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@+id/auth_nav_graph.xml"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/speedInfoFragment"
+        android:name="com.assignment.speedchecker.checker.ui.SpeedInfoFragment"
+        android:label="SpeedInfoFragment"
+        tools:layout="@layout/fragment_speed_info">
+        <action
+            android:id="@+id/action_speedInfoFragment_to_speedInfoListFragment"
+            app:destination="@id/speedInfoListFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/speedInfoListFragment"
+        android:name="com.assignment.speedchecker.checker.ui.SpeedInfoListFragment"
+        android:label="SpeedInfoListFragment" />
+
+</navigation>

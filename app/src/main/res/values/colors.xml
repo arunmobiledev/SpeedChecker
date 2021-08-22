@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Arun Raju. All rights reserved
+  -->
+
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="bg">#08107b</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+
+    <color name="grey">#6A6A6A</color>
+
+    <color name="black">#FF000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_10">#1A000000</color>
+
+    <color name="blue">#FF08107b</color>
+    <color name="blue_80">#CC08107b</color>
+    <color name="blue_60">#9908107b</color>
+
+    <color name="red">#FF0000</color>
+    <color name="dialog_bg">#FFFFFF</color>
+    <color name="green">#00FF00</color>
+    <color name="green_30">#4D00FF00</color>
+    <color name="grey_text">#131313</color>
+</resources>
