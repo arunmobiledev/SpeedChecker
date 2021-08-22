@@ -65,9 +65,6 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         methodRequiresPermissions()
-
-        fetchMobileNumber()
-
     }
 
     private fun fetchMobileNumber() {
@@ -117,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                     val uri: Uri = Uri.fromParts("package", packageName, null)
                     intent.data = uri
                     startActivity(intent)
+                    finish()
                 }
             }
         ).show()
@@ -131,6 +129,10 @@ class MainActivity : AppCompatActivity() {
             object : CallBackResult {
                 override fun onCall(result: String) {
                     appUtil.hideKeyboard(this@MainActivity)
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri: Uri = Uri.fromParts("package", packageName, null)
+                    intent.data = uri
+                    startActivity(intent)
                     finish()
                 }
             }
@@ -147,6 +149,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun methodRequiresPermissions() = runWithPermissions(Manifest.permission.READ_PHONE_NUMBERS, options = quickPermissionsOption) {
 //        appUtil.showToast("Access to mobile number permissions granted")
+        fetchMobileNumber()
     }
 
     override fun onResume() {

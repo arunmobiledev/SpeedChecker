@@ -32,8 +32,8 @@ class SpeedInfoViewModel(private val mFirebaseInstance: FirebaseDatabase, val ap
     val toast : SingleLiveEvent<ToastModel>  = SingleLiveEvent()
     var completeListener : SingleLiveEvent<Pair<String, Boolean>>  = SingleLiveEvent()
     var speedInfoModel : MutableLiveData<SpeedInfoModel>  = MutableLiveData()
-    private val testUploadFileSize =  1000000   // 1 Mb
-    private val testDownloadFile =  "1M.iso"    // 1 Mb
+    private val testUploadFileSize =  5000000   // 1 Mb
+    private val testDownloadFile =  "5M.iso"    // 1 Mb
 
     companion object {
         private const val TAG : String = "SpeedInfoViewModel"
@@ -144,7 +144,7 @@ class SpeedInfoViewModel(private val mFirebaseInstance: FirebaseDatabase, val ap
                         return
                     }
                     Log.e(TAG, "User data is changed!" + speedInfoModel.mobileNumber.toString() + ", " + speedInfoModel.timeStamp)
-                    appUtil.showToast("User data updated successfully")
+                    toast.value = ToastModel(R.drawable.ic_info, "User data updated successfully")
                 }
                 override fun onCancelled(error: DatabaseError) {
                     Log.e(TAG, "Failed to read SpeedInfoModel", error.toException())

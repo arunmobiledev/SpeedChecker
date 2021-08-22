@@ -3,7 +3,7 @@
   -->
 
 <resources>
-    <string name="app_name">Internet speed checker</string>
+    <string name="app_name">Net speed checker</string>
 
     <string name="ok">OK</string>
 

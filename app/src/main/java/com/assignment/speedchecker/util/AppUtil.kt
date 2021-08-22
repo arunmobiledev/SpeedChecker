@@ -32,7 +32,7 @@ class AppUtil(private var context: Context) {
     fun showCustomAlertWithAction(activity: Activity?, drawable: Int, msg: String, btnText: String, callBackResult: CallBackResult) : CustomAlertWithAction = CustomAlertWithAction(activity, drawable, msg, btnText, callBackResult)
 
     fun showToast(msg : String) {
-        val toast = Toast.makeText(context,msg,Toast.LENGTH_LONG)
+        val toast = Toast.makeText(context,msg,Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0,0)
         toast.show()
     }

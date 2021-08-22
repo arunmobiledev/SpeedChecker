@@ -40,7 +40,8 @@ class SpeedInfoFragment : Fragment() {
     private val appUtil: AppUtil by inject()
     private val appData: AppData by inject()
     private val speedInfoViewModel: SpeedInfoViewModel by inject()
-    private lateinit var currentSpeedInfoModel: SpeedInfoModel
+    private var currentSpeedInfoModel: SpeedInfoModel? = null
+    private var initiallyUpdated = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +61,9 @@ class SpeedInfoFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.appUtil = appUtil
 
-        currentSpeedInfoModel = SpeedInfoModel(appData.getString(AppData.MOBILE_NUMBER))
+        if(currentSpeedInfoModel == null) {
+            currentSpeedInfoModel = SpeedInfoModel(appData.getString(AppData.MOBILE_NUMBER))
+        }
         speedInfoViewModel.speedInfoModel.value = currentSpeedInfoModel
         setData(currentSpeedInfoModel)
 
@@ -84,11 +87,6 @@ class SpeedInfoFragment : Fragment() {
             binding.cltInternetAvailable?.visibility = View.VISIBLE
         }
 
-        updateNetSpeed()
-
-    }
-
-    private fun updateNetSpeed() {
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().finish()
         }
@@ -105,9 +103,13 @@ class SpeedInfoFragment : Fragment() {
             navController.navigate(R.id.action_speedInfoFragment_to_speedInfoListFragment)
         }
 
-        updateScreenData()
-        binding.btnUpload.setBackgroundResource(R.drawable.circle_button_bg_disabled)
-        binding.btnUpload.tag = "disabled"
+        binding.btnUpload.setOnClickListener {
+            try {
+                speedInfoViewModel.updateUser(currentSpeedInfoModel!!)
+            } catch(e : Exception) {
+                e.printStackTrace()
+            }
+        }
 
         speedInfoViewModel.completeListener.observe(viewLifecycleOwner, {
             if(it!!.first == "download") {
@@ -129,15 +131,28 @@ class SpeedInfoFragment : Fragment() {
                 binding.btnUpload.setBackgroundResource(R.drawable.circle_button_bg)
                 binding.btnUpload.tag = "enabled"
                 speedInfoViewModel.speedInfoModel.value?.updateTime()
-                binding.btnUpload.setOnClickListener {
-                    speedInfoViewModel.updateUser(currentSpeedInfoModel)
-                }
             }
         })
 
         speedInfoViewModel.speedInfoModel.observe(viewLifecycleOwner, {
             setData(it)
         })
+
+        speedInfoViewModel.toast.observe(viewLifecycleOwner, {
+            it?.msg?.let { it1 -> appUtil.showToast(it1) }
+        })
+
+        if(!initiallyUpdated) {
+            updateNetSpeed()
+            initiallyUpdated = true
+        }
+
+    }
+
+    private fun updateNetSpeed() {
+        updateScreenData()
+        binding.btnUpload.setBackgroundResource(R.drawable.circle_button_bg_disabled)
+        binding.btnUpload.tag = "disabled"
     }
 
     private fun updateScreenData() {
@@ -153,11 +168,11 @@ class SpeedInfoFragment : Fragment() {
         binding.lblProgress?.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
         setData(currentSpeedInfoModel)
         speedInfoViewModel.updateDownloadSpeedTask()
-        currentSpeedInfoModel.updateTime()
+        currentSpeedInfoModel?.updateTime()
     }
 
-    private fun setData(speedInfoModel: SpeedInfoModel) {
-        if(speedInfoModel.mobileNumber == null) {
+    private fun setData(speedInfoModel: SpeedInfoModel?) {
+        if(speedInfoModel != null && speedInfoModel.mobileNumber == null) {
             speedInfoModel.mobileNumber = ""
         }
         binding.speedInfoModel = speedInfoModel
