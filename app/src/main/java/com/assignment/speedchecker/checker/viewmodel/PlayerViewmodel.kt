@@ -6,16 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import com.assignment.speedchecker.MainApplication
 import com.assignment.speedchecker.R
 import com.assignment.speedchecker.checker.repo.PlayerDataService
+import com.assignment.speedchecker.util.AppUtil
 import com.assignment.speedchecker.util.SingleLiveEvent
 import com.assignment.speedchecker.util.ToastModel
 import com.google.android.gms.common.api.Response
-import com.prollery.business.MainApplication
-import com.prollery.business.R
-import com.prollery.business.account.model.Account
-import com.prollery.business.player.model.Player
-import com.prollery.business.player.model.PlayerResponse
-import com.prollery.business.player.repo.PlayerDataService
-import com.prollery.business.util.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
