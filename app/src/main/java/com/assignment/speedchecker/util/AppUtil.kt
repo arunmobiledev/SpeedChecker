@@ -9,6 +9,7 @@ import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Build
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -18,6 +19,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import com.assignment.speedchecker.R
 import com.assignment.speedchecker.databinding.DialogCustomBinding
+import com.assignment.speedchecker.util.progressloading.AVLoadingIndicatorView
 import java.text.CharacterIterator
 import java.text.SimpleDateFormat
 import java.text.StringCharacterIterator
@@ -127,6 +129,48 @@ class CustomAlertWithAction(activity: Activity?) : AlertDialog(activity!!) {
         super.dismiss()
         alertDialog?.dismiss()
     }
+
+}
+
+object CustomLoader {
+    private const val LOADER_SIZE_SCALE = 8
+    private const val LOADER_OFFSET_SCALE = 10
+    private val LOADERS = ArrayList<AppCompatDialog?>()
+
+
+    fun showLoading(context: Context?) {
+        val dialog = AppCompatDialog(context, R.style.dialog)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dialog.window!!.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY)
+        } else {
+            dialog.window!!.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT)
+        }
+        val avLoadingIndicatorView = AVLoadingIndicatorView(context)
+        avLoadingIndicatorView.setBackgroundResource(android.R.color.transparent)
+        dialog.setContentView(avLoadingIndicatorView)
+        val deviceWidth: Int = DimenUtil.screenWidth
+        val deviceHeight: Int = DimenUtil.screenHeight
+        val dialogWindow = dialog.window
+        val lp = dialogWindow!!.attributes
+        lp.width = deviceWidth / LOADER_SIZE_SCALE
+        lp.height = deviceHeight / LOADER_SIZE_SCALE
+        lp.height = lp.height + deviceHeight / LOADER_OFFSET_SCALE
+        lp.gravity = Gravity.CENTER
+        LOADERS.add(dialog)
+        dialog.show()
+    }
+
+
+    fun stopLoading() {
+        for (dialog in LOADERS) {
+            if (dialog != null) {
+                if (dialog.isShowing) {
+                    dialog.cancel()
+                }
+            }
+        }
+    }
+
 }
 
 
